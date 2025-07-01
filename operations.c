@@ -2,26 +2,27 @@
 
 void	swap_s(t_stack *stack)
 {
-	t_node *first;
-	t_node *second;
-	
+	t_node	*first;
+	t_node	*second;
+
 	if (!stack->top || !stack->top->next)
-		return;
+		ft_error("ERROR IN SWAP");
 	first = stack->top;
 	second = first->next;
-
 	stack->top = second;
 	first->next = second->next;
-	second->next = first;	
+	second->next = first;
 }
 
 void	push_value(t_stack *stack, int value)
 {
 	t_node	*node;
 
+	if (!stack || !stack->top || !stack->top->next)
+		ft_error("ERROR IN PUSH");
 	node = (t_node *)malloc(sizeof(t_node));
 	if (!node)
-		return;
+		return ;
 	node->value = value;
 	node->next = stack->top;
 	stack->top = node;
@@ -31,17 +32,16 @@ void	push_value(t_stack *stack, int value)
 void	push(t_stack *src, t_stack *dest)
 {
 	t_node	*temp;
-	if (!src->top)
-		return;
+
+	if (!src->top || !src || !dest || !dest->top)
+		ft_error("ERROR IN PUSH");
 	temp = src->top;
-	src->top =  temp->next;
+	src->top = temp->next;
 	src->size--;
 	temp->next = dest->top;
 	dest->top = temp;
 	dest->size++;
 }
-
-
 
 /*
 1. swap function for swapping elements in same stack
