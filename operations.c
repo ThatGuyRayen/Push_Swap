@@ -14,3 +14,36 @@ void	swap_s(t_stack *stack)
 	first->next = second->next;
 	second->next = first;	
 }
+
+void	push_value(t_stack *stack, int value)
+{
+	t_node	*node;
+
+	node = (t_node *)malloc(sizeof(t_node));
+	if (!node)
+		return;
+	node->value = value;
+	node->next = stack->top;
+	stack->top = node;
+	stack->size++;
+}
+
+void	push(t_stack *src, t_stack *dest)
+{
+	t_node	*temp;
+	if (!src->top)
+		return;
+	temp = src->top;
+	src->top =  temp->next;
+	src->size--;
+	temp->next = dest->top;
+	dest->top = temp;
+	dest->size++;
+}
+
+
+
+/*
+1. swap function for swapping elements in same stack
+2. push function for pushing elements from one stack to another
+3. */

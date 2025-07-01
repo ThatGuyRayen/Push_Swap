@@ -21,5 +21,7 @@ t_node	*ft_lstnew_ps(int value);
 int	exits_in_stack(t_stack *stack, int value);
 void	fill_stack(t_stack *stack, int argc, char **argv);
 void	swap_s(t_stack *stack);
+void	push_value(t_stack *stack, int value);
+void	push(t_stack *src, t_stack *dest);
 
 #endif
