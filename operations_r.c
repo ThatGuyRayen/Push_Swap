@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   operations_r.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpandya <tpandya@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/02 09:55:35 by tpandya           #+#    #+#             */
-/*   Updated: 2025/07/02 09:55:37 by tpandya          ###   ########.fr       */
+/*   Created: 2025/07/02 09:56:10 by tpandya           #+#    #+#             */
+/*   Updated: 2025/07/02 09:56:11 by tpandya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_error(char *error_text)
+void	rra(t_stack *stack_a)
 {
-	ft_printf("%s", error_text);
-	exit(EXIT_FAILURE);
+	reverse_rotate(stack_a);
+}
+
+void	rrb(t_stack *stack_b)
+{
+	reverse_rotate(stack_b);
+}
+
+void	rrr(t_stack *stack_a, t_stack *stack_b)
+{
+	reverse_rotate(stack_a);
+	reverse_rotate(stack_b);
 }

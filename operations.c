@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   operations.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tpandya <tpandya@student.42berlin.de>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/02 09:55:45 by tpandya           #+#    #+#             */
+/*   Updated: 2025/07/02 09:55:53 by tpandya          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	swap_s(t_stack *stack)
@@ -44,6 +56,6 @@ void	push(t_stack *src, t_stack *dest)
 }
 
 /*
-1. swap function for swapping elements in same stack
-2. push function for pushing elements from one stack to another
-3. */
+   1. swap function for swapping elements in same stack
+   2. push function for pushing elements from one stack to another
+   3. */
