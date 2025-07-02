@@ -54,6 +54,9 @@ int	main(int argc, char *argv[])
 		return (0);
 	}
 	print_stack(stack_a);
+	ft_printf("\n");
+	ra(stack_a);
+	print_stack(stack_a);
 	return (0);
 }
 
