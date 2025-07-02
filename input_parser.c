@@ -77,6 +77,7 @@ void	fill_stack(t_stack *stack, int argc, char **argv)
 		node = ft_lstnew_ps(value);
 		node->index = -1;
 		ft_lstadd_back_ps(&stack->top, node);
+		stack->size++;
 		i++;
 	}
 }

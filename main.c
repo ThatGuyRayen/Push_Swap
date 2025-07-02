@@ -12,11 +12,48 @@
 
 #include "push_swap.h"
 
+void	print_stack(t_stack *stack)
+{
+	t_node	*temp;
+
+	if (!stack || !stack->top)
+		return ;
+	temp = stack->top;
+	while (temp)
+	{
+		ft_printf("%d ", temp->value);
+		temp = temp->next;
+	}
+	ft_printf("\n");
+}
+
 int	main(int argc, char *argv[])
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-
+	if (argc < 2)
+		return (0);
+	stack_a = (t_stack *)malloc(sizeof(t_stack));
+	if (!stack_a)
+		return (1);
+	stack_b = (t_stack *)malloc(sizeof(t_stack));
+	if (!stack_b)
+	{
+		free(stack_a);
+		return (1);
+	}
+	stack_a->top = NULL;
+	stack_a->size = 0;
+	stack_b->top = NULL;
+	stack_b->size = 0;
 	fill_stack(stack_a, argc, argv);
+	if (stack_a->size < 2)
+	{
+		free(stack_a);
+		free(stack_b);
+		return (0);
+	}
+	print_stack(stack_a);
 	return (0);
 }
+
