@@ -59,4 +59,3 @@ int	main(int argc, char *argv[])
 	print_stack(stack_a);
 	return (0);
 }
-
