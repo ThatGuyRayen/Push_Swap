@@ -46,6 +46,11 @@ int	main(int argc, char *argv[])
 	stack_a->size = 0;
 	stack_b->top = NULL;
 	stack_b->size = 0;
+	if (argc == 2)
+	{
+		argv = ft_split(argv[1], ' ');
+		argc = count_args(argv);
+	}
 	fill_stack(stack_a, argc, argv);
 	if (stack_a->size < 2)
 	{

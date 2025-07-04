@@ -3,7 +3,7 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra
 SRC_DIR = .
 OBJ_DIR = objs
-SRCS = main.c input_parser.c error.c operations.c operations_r.c operations_rotation.c operations_swap.c
+SRCS = main.c input_parser.c error.c operations.c operations_r.c operations_rotation.c operations_swap.c utils.c
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 LIBFT = libft/libft.a
 INCLUDES = -I. -Ilibft

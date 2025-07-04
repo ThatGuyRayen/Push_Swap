@@ -56,5 +56,5 @@ int					find_index(int *arr, int size, int value);
 void				assign_index_to_nodes(t_stack *stack, int *sorted_values);
 void				b_sort(int *arr, int size);
 void				assign_index(t_stack *stack);
-
+int					count_args(char **argv);
 #endif

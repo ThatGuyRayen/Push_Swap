@@ -9,3 +9,13 @@
 /*   Updated: 2025/07/02 09:57:01 by tpandya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "push_swap.h"
+
+int	count_args(char **argv)
+{
+	int	count = 0;
+	while (argv[count])
+		count++;
+	return (count);
+}
