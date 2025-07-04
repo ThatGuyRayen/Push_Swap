@@ -15,25 +15,30 @@
 void	sa(t_stack *stack_a)
 {
 	swap_s(stack_a);
+	ft_printf("sa\n");
 }
 
 void	sb(t_stack *stack_b)
 {
 	swap_s(stack_b);
+	ft_printf("sb\n");
 }
 
 void	ss(t_stack *stack_a, t_stack *stack_b)
 {
 	swap_s(stack_a);
 	swap_s(stack_b);
+	ft_printf("ss\n");
 }
 
 void	pa(t_stack *stack_b, t_stack *stack_a)
 {
 	push(stack_b, stack_a);
+	ft_printf("pa\n");
 }
 
 void	pb(t_stack *stack_a, t_stack *stack_b)
 {
 	push(stack_a, stack_b);
+	ft_printf("pb\n");
 }

@@ -53,7 +53,7 @@ void				rrr(t_stack *stack_a, t_stack *stack_b);
 void				print_stack(t_stack *stack);
 int					*copy_to_arr(t_stack *stack);
 int					find_index(int *arr, int size, int value);
-void				assign_index_to_nodes(t_stack, int *sorted_values);
+void				assign_index_to_nodes(t_stack *stack, int *sorted_values);
 void				b_sort(int *arr, int size);
 void				assign_index(t_stack *stack);
 
