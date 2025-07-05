@@ -32,9 +32,9 @@ void	sort3(t_stack *stack)
 int	find_min_position(t_stack *stack)
 {
 	t_node	*current;
-	int	min_i;
-	int	min_pos;
-	int	pos;
+	int		min_i;
+	int		min_pos;
+	int		pos;
 
 	current = stack->top;
 	min_i = current->index;
@@ -60,7 +60,7 @@ void	sort_five(t_stack *a, t_stack *b)
 	while (a->size > 3)
 	{
 		pos = find_min_position(a);
-		if (pos <= a->size/2)
+		if (pos <= a->size / 2)
 			while (pos--)
 				ra(a);
 		else
@@ -74,5 +74,3 @@ void	sort_five(t_stack *a, t_stack *b)
 	pa(a, b);
 	pa(a, b);
 }
-
-

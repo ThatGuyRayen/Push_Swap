@@ -57,4 +57,8 @@ void				assign_index_to_nodes(t_stack *stack, int *sorted_values);
 void				b_sort(int *arr, int size);
 void				assign_index(t_stack *stack);
 int					count_args(char **argv);
+void				sort3(t_stack *stack);
+int					find_min_position(t_stack *stack);
+void				sort_five(t_stack *a, t_stack *b);
+
 #endif
