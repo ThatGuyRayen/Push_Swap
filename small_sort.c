@@ -56,7 +56,7 @@ int	find_min_position(t_stack *stack)
 void	sort_five(t_stack *a, t_stack *b)
 {
 	int	pos;
-
+	int	rotation;
 	while (a->size > 3)
 	{
 		pos = find_min_position(a);
@@ -64,8 +64,11 @@ void	sort_five(t_stack *a, t_stack *b)
 			while (pos--)
 				ra(a);
 		else
-			while (pos++ < a->size)
+		{
+			rotation = a->size - pos;
+			while (rotation--)
 				rra(a);
+		}
 		pb(a, b);
 	}
 	sort3(a);

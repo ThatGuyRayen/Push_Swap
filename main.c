@@ -60,7 +60,7 @@ int	main(int argc, char *argv[])
 	}
 	print_stack(stack_a);
 	ft_printf("\n");
-	sort_five(stack_a, stack_b);
+	sort3(stack_a, stack_b);
 	print_stack(stack_a);
 	return (0);
 }
