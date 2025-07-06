@@ -58,9 +58,18 @@ int	main(int argc, char *argv[])
 		free(stack_b);
 		return (0);
 	}
+	assign_index(stack_a);
 	print_stack(stack_a);
 	ft_printf("\n");
-	sort3(stack_a, stack_b);
+	if (stack_a->size == 2)
+	{
+		if (stack_a->top->index > stack_a->top->next->index)
+			sa(stack_a);
+	}
+	else if (stack_a->size == 3)
+		sort3(stack_a);
+	else if (stack_a->size <= 5)
+		sort_five(stack_a, stack_b);
 	print_stack(stack_a);
 	return (0);
 }

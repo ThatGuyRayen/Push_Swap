@@ -45,7 +45,7 @@ void	push(t_stack *src, t_stack *dest)
 {
 	t_node	*temp;
 
-	if (!src->top || !src || !dest)
+	if (!src || !dest || !src->top)
 		ft_error("ERROR IN PUSH");
 	temp = src->top;
 	src->top = temp->next;
