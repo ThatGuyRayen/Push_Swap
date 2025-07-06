@@ -59,8 +59,8 @@ int	main(int argc, char *argv[])
 		return (0);
 	}
 	assign_index(stack_a);
-	print_stack(stack_a);
-	ft_printf("\n");
+	// print_stack(stack_a);
+	// ft_printf("\n");
 	if (stack_a->size == 2)
 	{
 		if (stack_a->top->index > stack_a->top->next->index)
@@ -72,6 +72,6 @@ int	main(int argc, char *argv[])
 		sort_five(stack_a, stack_b);
 	else
 		radix_sort(stack_a, stack_b);
-	print_stack(stack_a);
+	// print_stack(stack_a);
 	return (0);
 }
