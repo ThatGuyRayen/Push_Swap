@@ -17,3 +17,21 @@ void	ft_error(char *error_text)
 	ft_printf("%s", error_text);
 	exit(EXIT_FAILURE);
 }
+
+void	free_stack(t_stack *stack)
+{
+	t_node *current;
+	t_node *next;
+
+	if (!stack)
+		ft_error("No stack");
+	current = stack->top;
+	while (current)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+	}
+	stack->top = NULL;
+	stack->size = 0;
+}

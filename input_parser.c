@@ -58,7 +58,7 @@ void	ft_lstadd_back_ps(t_node **lst, t_node *new)
 	last->next = new;
 }
 
-void	fill_stack(t_stack *stack, int argc, char **argv)
+int	fill_stack(t_stack *stack, int argc, char **argv)
 {
 	int		i;
 	long	value;
@@ -68,18 +68,25 @@ void	fill_stack(t_stack *stack, int argc, char **argv)
 	while (i < argc)
 	{
 		if (!argv[i])
-			ft_error("Please feed me");
+			return (0); // Invalid input
+
 		value = ft_atoi(argv[i]);
 		if (value > INT_MAX || value < INT_MIN)
-			ft_error("Please Enter Valid Input");
-		if (exits_in_stack(stack, (int)value) == 1)
-			ft_error("Invalid Input");
+			ft_error("feed me but not too much");
+
+		if (exits_in_stack(stack, (int)value))
+			ft_error("Already Exists");
+
 		node = ft_lstnew_ps(value);
+		if (!node)
+			ft_error("Malloc Failed");
+
 		node->index = -1;
 		ft_lstadd_back_ps(&stack->top, node);
 		stack->size++;
 		i++;
 	}
+	return (1);
 }
 
 /*

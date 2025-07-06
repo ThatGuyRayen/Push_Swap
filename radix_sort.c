@@ -26,3 +26,16 @@ void	radix_sort(t_stack *a, t_stack *b)
 			pa(b,a);
 	}
 }
+
+void	sort_stack(t_stack *a, t_stack *b)
+{
+	if (a->size == 2 && a->top->index > a->top->next->index)
+		sa(a);
+	else if (a->size == 3)
+		sort3(a);
+	else if (a->size == 5)
+		sort_five(a, b);
+	else
+		radix_sort(a, b);
+}
+

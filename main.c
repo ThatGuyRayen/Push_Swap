@@ -27,51 +27,60 @@ void	print_stack(t_stack *stack)
 	ft_printf("\n");
 }
 
+int	init_stacks(t_stack **a, t_stack **b)
+{
+	*a = malloc(sizeof(t_stack));
+	*b = malloc(sizeof(t_stack));
+	if (!*a || !*b)
+	{
+		free(*a);
+		free(*b);
+		return (0);
+	}
+	(*a)->top = NULL;
+	(*a)->size = 0;
+	(*b)->top = NULL;
+	(*b)->size = 0;
+	return (1);
+}
+
+int	free_stacks(t_stack *a, t_stack *b)
+{
+	free_stack(a);
+	free_stack(b);
+	free(a);
+	free(b);
+	return (0);
+}
+
 int	main(int argc, char *argv[])
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
+
 	if (argc < 2)
 		return (0);
-	stack_a = (t_stack *)malloc(sizeof(t_stack));
-	if (!stack_a)
+
+	if (!init_stacks(&stack_a, &stack_b))
 		return (1);
-	stack_b = (t_stack *)malloc(sizeof(t_stack));
-	if (!stack_b)
-	{
-		free(stack_a);
-		return (1);
-	}
-	stack_a->top = NULL;
-	stack_a->size = 0;
-	stack_b->top = NULL;
-	stack_b->size = 0;
+
 	if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');
+		if (!argv || !*argv)
+			return (free_stacks(stack_a, stack_b), 1);
 		argc = count_args(argv);
 	}
-	fill_stack(stack_a, argc, argv);
+
+	if (!fill_stack(stack_a, argc, argv))
+		return (free_stacks(stack_a, stack_b), 1);
+
 	if (stack_a->size < 2)
-	{
-		free(stack_a);
-		free(stack_b);
-		return (0);
-	}
+		return (free_stacks(stack_a, stack_b), 0);
+
 	assign_index(stack_a);
-	// print_stack(stack_a);
-	// ft_printf("\n");
-	if (stack_a->size == 2)
-	{
-		if (stack_a->top->index > stack_a->top->next->index)
-			sa(stack_a);
-	}
-	else if (stack_a->size == 3)
-		sort3(stack_a);
-	else if (stack_a->size == 5)
-		sort_five(stack_a, stack_b);
-	else
-		radix_sort(stack_a, stack_b);
-	// print_stack(stack_a);
-	return (0);
+	sort_stack(stack_a, stack_b);
+
+	return (free_stacks(stack_a, stack_b), 0);
 }
+

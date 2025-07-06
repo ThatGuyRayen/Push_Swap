@@ -33,7 +33,7 @@ typedef struct s_stack
 void				ft_error(char *error_text);
 t_node				*ft_lstnew_ps(int value);
 int					exits_in_stack(t_stack *stack, int value);
-void				fill_stack(t_stack *stack, int argc, char **argv);
+int			fill_stack(t_stack *stack, int argc, char **argv);
 void				swap_s(t_stack *stack);
 void				push_value(t_stack *stack, int value);
 void				push(t_stack *src, t_stack *dest);
@@ -61,4 +61,8 @@ void				sort3(t_stack *stack);
 int					find_min_position(t_stack *stack);
 void				sort_five(t_stack *a, t_stack *b);
 void	radix_sort(t_stack *a, t_stack *b);
+void	sort_stack(t_stack *a, t_stack *b);
+int	init_stacks(t_stack **a, t_stack **b);
+int	free_stacks(t_stack *a, t_stack *b);
+void	free_stack(t_stack *stack);
 #endif
