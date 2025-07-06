@@ -60,10 +60,8 @@ int	main(int argc, char *argv[])
 
 	if (argc < 2)
 		return (0);
-
 	if (!init_stacks(&stack_a, &stack_b))
 		return (1);
-
 	if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');
@@ -71,16 +69,11 @@ int	main(int argc, char *argv[])
 			return (free_stacks(stack_a, stack_b), 1);
 		argc = count_args(argv);
 	}
-
 	if (!fill_stack(stack_a, argc, argv))
 		return (free_stacks(stack_a, stack_b), 1);
-
 	if (stack_a->size < 2)
 		return (free_stacks(stack_a, stack_b), 0);
-
 	assign_index(stack_a);
 	sort_stack(stack_a, stack_b);
-
 	return (free_stacks(stack_a, stack_b), 0);
 }
-

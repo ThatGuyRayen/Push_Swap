@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   small_sort.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tpandya <tpandya@student.42berlin.de>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/06 19:01:39 by tpandya           #+#    #+#             */
+/*   Updated: 2025/07/06 19:01:40 by tpandya          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	sort3(t_stack *stack)
@@ -57,6 +69,7 @@ void	sort_five(t_stack *a, t_stack *b)
 {
 	int	pos;
 	int	rotation;
+
 	while (a->size > 3)
 	{
 		pos = find_min_position(a);

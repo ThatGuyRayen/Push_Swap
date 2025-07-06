@@ -14,7 +14,9 @@
 
 int	count_args(char **argv)
 {
-	int	count = 0;
+	int	count;
+
+	count = 0;
 	while (argv[count])
 		count++;
 	return (count);
