@@ -68,7 +68,7 @@ int	main(int argc, char *argv[])
 	}
 	else if (stack_a->size == 3)
 		sort3(stack_a);
-	else if (stack_a->size <= 5)
+	else if (stack_a->size == 5)
 		sort_five(stack_a, stack_b);
 	print_stack(stack_a);
 	return (0);

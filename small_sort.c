@@ -74,6 +74,6 @@ void	sort_five(t_stack *a, t_stack *b)
 	sort3(a);
 	if (b->size == 2 && b->top->index < b->top->next->index)
 		sb(b);
-	pa(a, b);
-	pa(a, b);
+	pa(b, a);
+	pa(b, a);
 }
