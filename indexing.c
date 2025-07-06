@@ -21,7 +21,7 @@ int	*copy_to_arr(t_stack *stack)
 	i = 0;
 	arr = malloc(sizeof(int) * stack->size);
 	if (!arr)
-		return (NULL);
+		ft_error("No array");
 	current = stack->top;
 	while (i < stack->size)
 	{
@@ -96,7 +96,7 @@ void	assign_index(t_stack *stack)
 	size = stack->size;
 	values = copy_to_arr(stack);
 	if (!values)
-		return ;
+		ft_error("No values to assign");
 	b_sort(values, size);
 	assign_index_to_nodes(stack, values);
 	free(values);

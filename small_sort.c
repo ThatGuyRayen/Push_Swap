@@ -22,7 +22,7 @@ void	sort3(t_stack *stack)
 	second = stack->top->next->index;
 	third = stack->top->next->next->index;
 	if (first < second && second < third)
-		return ;
+		ft_error("error");
 	else if (first < third && third < second)
 	{
 		sa(stack);

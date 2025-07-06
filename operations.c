@@ -34,7 +34,7 @@ void	push_value(t_stack *stack, int value)
 		ft_error("ERROR IN PUSH");
 	node = (t_node *)malloc(sizeof(t_node));
 	if (!node)
-		return ;
+		ft_error("Error");
 	node->value = value;
 	node->next = stack->top;
 	stack->top = node;

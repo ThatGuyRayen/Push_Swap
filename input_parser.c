@@ -18,7 +18,7 @@ t_node	*ft_lstnew_ps(int value)
 
 	node = (t_node *)malloc(sizeof(t_node));
 	if (!node)
-		return (NULL);
+		ft_error("Error");
 	node->value = value;
 	node->index = -1;
 	node->next = NULL;
@@ -46,11 +46,11 @@ void	ft_lstadd_back_ps(t_node **lst, t_node *new)
 	t_node	*last;
 
 	if (!lst || !new)
-		return ;
+		ft_error("Error");
 	if (!*lst)
 	{
 		*lst = new;
-		return ;
+		ft_error("Error");
 	}
 	last = *lst;
 	while (last->next)
@@ -64,13 +64,13 @@ int	is_numeric(const char *str)
 
 	i = 0;
 	if (!str || !*str)
-		return (0);
+		ft_error("Error");
 	if (str[0] == '-' || str[0] == '+')
 		i++;
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
-			return (0);
+			ft_error("Digits please.. i am not AI");
 		i++;
 	}
 	return (1);

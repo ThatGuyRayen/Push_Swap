@@ -17,7 +17,7 @@ void	print_stack(t_stack *stack)
 	t_node	*temp;
 
 	if (!stack || !stack->top)
-		return ;
+		ft_error("No stack");
 	temp = stack->top;
 	while (temp)
 	{
@@ -35,7 +35,7 @@ int	init_stacks(t_stack **a, t_stack **b)
 	{
 		free(*a);
 		free(*b);
-		return (0);
+		ft_error("error while freeing");
 	}
 	(*a)->top = NULL;
 	(*a)->size = 0;
@@ -59,9 +59,9 @@ int	main(int argc, char *argv[])
 	t_stack	*stack_b;
 
 	if (argc < 2)
-		return (0);
+		ft_error("Feed more please");
 	if (!init_stacks(&stack_a, &stack_b))
-		return (1);
+		ft_error("Sorry but can't make stack");
 	if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');
