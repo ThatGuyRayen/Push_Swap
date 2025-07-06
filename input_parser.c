@@ -18,7 +18,7 @@ t_node	*ft_lstnew_ps(int value)
 
 	node = (t_node *)malloc(sizeof(t_node));
 	if (!node)
-		ft_error("Error");
+		ft_error("No node");
 	node->value = value;
 	node->index = -1;
 	node->next = NULL;
@@ -50,7 +50,7 @@ void	ft_lstadd_back_ps(t_node **lst, t_node *new)
 	if (!*lst)
 	{
 		*lst = new;
-		ft_error("Error");
+		return ;
 	}
 	last = *lst;
 	while (last->next)
@@ -82,7 +82,7 @@ int	fill_stack(t_stack *stack, int argc, char **argv)
 	long	value;
 	t_node	*node;
 
-	i = 1;
+	i = 0;
 	while (i < argc)
 	{
 		if (!argv[i] || !is_numeric(argv[i]))
