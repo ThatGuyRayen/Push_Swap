@@ -60,5 +60,5 @@ int					count_args(char **argv);
 void				sort3(t_stack *stack);
 int					find_min_position(t_stack *stack);
 void				sort_five(t_stack *a, t_stack *b);
-
+void	radix_sort(t_stack *a, t_stack *b);
 #endif

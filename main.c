@@ -70,6 +70,8 @@ int	main(int argc, char *argv[])
 		sort3(stack_a);
 	else if (stack_a->size == 5)
 		sort_five(stack_a, stack_b);
+	else
+		radix_sort(stack_a, stack_b);
 	print_stack(stack_a);
 	return (0);
 }
