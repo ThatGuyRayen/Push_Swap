@@ -27,11 +27,10 @@ t_node	*ft_lstnew_ps(int value)
 
 int	exits_in_stack(t_stack *stack, int value)
 {
-	int		i;
 	t_node	*temp;
 
 	temp = stack->top;
-	i = 0;
+	
 	while (temp)
 	{
 		if (temp->value == value)
