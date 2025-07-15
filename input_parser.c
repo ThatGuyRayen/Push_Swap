@@ -63,13 +63,13 @@ int	is_numeric(const char *str)
 
 	i = 0;
 	if (!str || !*str)
-		ft_error("Error");
+		return (0);
 	if (str[0] == '-' || str[0] == '+')
 		i++;
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
-			ft_error("Digits please.. i am not AI");
+			return (0);
 		i++;
 	}
 	return (1);
@@ -81,7 +81,7 @@ int	fill_stack(t_stack *stack, int argc, char **argv)
 	long	value;
 	t_node	*node;
 
-	i = 0;
+	i = 1;
 	while (i < argc)
 	{
 		if (!argv[i] || !is_numeric(argv[i]))
