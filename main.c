@@ -69,7 +69,7 @@ int	main(int argc, char *argv[])
 			return (free_stacks(stack_a, stack_b), 1);
 		argc = count_args(argv);
 	}
-	if (!fill_stack(stack_a, argc, argv))
+	if (!fill_stack(stack_a, argc - 1, argv + 1))
 		return (free_stacks(stack_a, stack_b), 1);
 //	print_stack(stack_a);
 	if (stack_a->size < 2)
@@ -77,6 +77,6 @@ int	main(int argc, char *argv[])
 	assign_index(stack_a);
 //	print_stack(stack_a);
 	sort_stack(stack_a, stack_b);
-//	print_stack(stack_a);
+	print_stack(stack_a);
 	return (free_stacks(stack_a, stack_b), 0);
 }
