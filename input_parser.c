@@ -81,7 +81,7 @@ int	fill_stack(t_stack *stack, int argc, char **argv)
 	long	value;
 	t_node	*node;
 
-	i = 1;
+	i = 0;
 	while (i < argc)
 	{
 		if (!argv[i] || !is_numeric(argv[i]))
