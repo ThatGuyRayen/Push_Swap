@@ -53,10 +53,18 @@ int	free_stacks(t_stack *a, t_stack *b)
 	return (0);
 }
 
+void	sort_and_index(t_stack *a, t_stack *b)
+{
+	assign_index(a);
+	sort_stack(a, b);
+}
+
 int	main(int argc, char *argv[])
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
+	char	**args;
+	int		count;
 
 	if (argc < 2)
 		ft_error("Feed more please");
@@ -64,19 +72,17 @@ int	main(int argc, char *argv[])
 		ft_error("Sorry but can't make stack");
 	if (argc == 2)
 	{
-		argv = ft_split(argv[1], ' ');
-		if (!argv || !*argv)
+		args = ft_split(argv[1], ' ');
+		if (!args || !*args)
 			return (free_stacks(stack_a, stack_b), 1);
-		argc = count_args(argv);
+		count = count_args(args);
+		if (!fill_stack(stack_a, count, args))
+			return (free_split(args), free_stacks(stack_a, stack_b), 1);
+		free_split(args);
 	}
-	if (!fill_stack(stack_a, argc - 1, argv + 1))
+	else if (!fill_stack(stack_a, argc - 1, argv + 1))
 		return (free_stacks(stack_a, stack_b), 1);
-//	print_stack(stack_a);
-	if (stack_a->size < 2)
-		return (free_stacks(stack_a, stack_b), 0);
-	assign_index(stack_a);
-//	print_stack(stack_a);
-	sort_stack(stack_a, stack_b);
-	print_stack(stack_a);
+	if (stack_a->size > 1)
+		sort_and_index(stack_a, stack_b);
 	return (free_stacks(stack_a, stack_b), 0);
 }

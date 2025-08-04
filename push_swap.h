@@ -66,4 +66,7 @@ void				sort_stack(t_stack *a, t_stack *b);
 int					init_stacks(t_stack **a, t_stack **b);
 int					free_stacks(t_stack *a, t_stack *b);
 void				free_stack(t_stack *stack);
+void				free_split(char **split);
+void				sort_and_index(t_stack *a, t_stack *b);
+
 #endif

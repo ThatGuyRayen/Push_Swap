@@ -30,7 +30,6 @@ int	exits_in_stack(t_stack *stack, int value)
 	t_node	*temp;
 
 	temp = stack->top;
-	
 	while (temp)
 	{
 		if (temp->value == value)

@@ -54,7 +54,6 @@ void	push(t_stack *src, t_stack *dest)
 	dest->top = temp;
 	dest->size++;
 }
-
 /*
    1. swap function for swapping elements in same stack
    2. push function for pushing elements from one stack to another

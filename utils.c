@@ -21,3 +21,13 @@ int	count_args(char **argv)
 		count++;
 	return (count);
 }
+
+void	free_split(char **split)
+{
+	int	i;
+
+	i = 0;
+	while (split[i])
+		free(split[i++]);
+	free(split);
+}
