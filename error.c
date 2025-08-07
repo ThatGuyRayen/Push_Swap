@@ -12,10 +12,27 @@
 
 #include "push_swap.h"
 
-void	ft_error(char *error_text)
+int	ft_error(char *error_text)
 {
 	ft_printf("%s", error_text);
-	exit(EXIT_FAILURE);
+	return (0);
+}
+
+void ft_error_0(t_stack *stack_a, t_stack *stack_b, const char *msg)
+{
+    if (stack_a)
+    {
+        free_stack(stack_a);
+        free(stack_a);
+    }
+    if (stack_b)
+    {
+        free_stack(stack_b);
+        free(stack_b);
+    }
+    if (msg)
+        write(2, msg, strlen(msg));
+    exit(EXIT_FAILURE);
 }
 
 void	free_stack(t_stack *stack)
@@ -24,7 +41,7 @@ void	free_stack(t_stack *stack)
 	t_node	*next;
 
 	if (!stack)
-		ft_error("No stack");
+		return ;
 	current = stack->top;
 	while (current)
 	{

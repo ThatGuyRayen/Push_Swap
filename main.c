@@ -35,7 +35,7 @@ int	init_stacks(t_stack **a, t_stack **b)
 	{
 		free(*a);
 		free(*b);
-		ft_error("error while freeing");
+		ft_error("Error\n");
 	}
 	(*a)->top = NULL;
 	(*a)->size = 0;
@@ -67,22 +67,25 @@ int	main(int argc, char *argv[])
 	int		count;
 
 	if (argc < 2)
-		ft_error("Feed more please");
+		return (0);	
 	if (!init_stacks(&stack_a, &stack_b))
-		ft_error("Sorry but can't make stack");
+		ft_error("Error\n");
 	if (argc == 2)
 	{
 		args = ft_split(argv[1], ' ');
 		if (!args || !*args)
-			return (free_stacks(stack_a, stack_b), 1);
+			return (free_split(args), free_stacks(stack_a, stack_b), 1);
 		count = count_args(args);
-		if (!fill_stack(stack_a, count, args))
+		if (!fill_stack(stack_a, stack_b, count, args))
 			return (free_split(args), free_stacks(stack_a, stack_b), 1);
 		free_split(args);
 	}
-	else if (!fill_stack(stack_a, argc - 1, argv + 1))
+	else if (!fill_stack(stack_a, stack_b, argc - 1, argv + 1))
 		return (free_stacks(stack_a, stack_b), 1);
+	if (check_sorted(stack_a) == 1)
+		return (free_stacks(stack_a, stack_b), 0);
 	if (stack_a->size > 1)
 		sort_and_index(stack_a, stack_b);
+//	print_stack(stack_a);
 	return (free_stacks(stack_a, stack_b), 0);
 }

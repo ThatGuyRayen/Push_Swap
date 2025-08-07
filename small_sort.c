@@ -21,9 +21,7 @@ void	sort3(t_stack *stack)
 	first = stack->top->index;
 	second = stack->top->next->index;
 	third = stack->top->next->next->index;
-	if (first < second && second < third)
-		ft_error("error");
-	else if (first < third && third < second)
+	if (first < third && third < second)
 	{
 		sa(stack);
 		ra(stack);

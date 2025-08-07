@@ -18,7 +18,7 @@ t_node	*ft_lstnew_ps(int value)
 
 	node = (t_node *)malloc(sizeof(t_node));
 	if (!node)
-		ft_error("No node");
+		ft_error("Error\n");
 	node->value = value;
 	node->index = -1;
 	node->next = NULL;
@@ -44,7 +44,7 @@ void	ft_lstadd_back_ps(t_node **lst, t_node *new)
 	t_node	*last;
 
 	if (!lst || !new)
-		ft_error("Error");
+		ft_error("Error\n");
 	if (!*lst)
 	{
 		*lst = new;
@@ -74,7 +74,7 @@ int	is_numeric(const char *str)
 	return (1);
 }
 
-int	fill_stack(t_stack *stack, int argc, char **argv)
+int	fill_stack(t_stack *stack, t_stack *stack_b, int argc, char **argv)
 {
 	int		i;
 	long	value;
@@ -83,16 +83,14 @@ int	fill_stack(t_stack *stack, int argc, char **argv)
 	i = 0;
 	while (i < argc)
 	{
-		if (!argv[i] || !is_numeric(argv[i]))
-			ft_error("Not a valid Input");
-		value = ft_atoi(argv[i]);
-		if (value > INT_MAX || value < INT_MIN)
-			ft_error("feed me but not too much");
+		if (!argv[i] || is_numeric(argv[i]) == 0)
+			ft_error_0(stack, stack_b, "Error\n");
+		value = ps_atoi(argv[i]);
 		if (exits_in_stack(stack, (int)value))
-			ft_error("Already Exists");
+			ft_error_0(stack, stack_b, "Error\n");
 		node = ft_lstnew_ps(value);
 		if (!node)
-			ft_error("Malloc Failed");
+			ft_error_0(stack, stack_b, "Error\n");
 		node->index = -1;
 		ft_lstadd_back_ps(&stack->top, node);
 		stack->size++;
@@ -100,6 +98,7 @@ int	fill_stack(t_stack *stack, int argc, char **argv)
 	}
 	return (1);
 }
+
 /*
    1. reads and validates input
    2. checks for duplicates and valid integer range
