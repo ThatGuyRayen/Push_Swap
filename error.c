@@ -18,7 +18,7 @@ int	ft_error(char *error_text)
 	return (0);
 }
 
-void ft_error_0(t_stack *stack_a, t_stack *stack_b, const char *msg)
+void ft_error_0(t_stack *stack_a, t_stack *stack_b, const char *msg, char **str)
 {
     if (stack_a)
     {
@@ -29,6 +29,10 @@ void ft_error_0(t_stack *stack_a, t_stack *stack_b, const char *msg)
     {
         free_stack(stack_b);
         free(stack_b);
+    }
+    if (str){
+	    free_split(str);
+	    str = NULL;
     }
     if (msg)
         write(2, msg, strlen(msg));
@@ -45,10 +49,14 @@ void	free_stack(t_stack *stack)
 	current = stack->top;
 	while (current)
 	{
-		next = current->next;
+		next = current->next;	
 		free(current);
 		current = next;
 	}
+	//free(stack->top);
 	stack->top = NULL;
 	stack->size = 0;
 }
+
+
+

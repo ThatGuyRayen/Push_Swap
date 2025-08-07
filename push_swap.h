@@ -31,7 +31,8 @@ typedef struct s_stack
 }					t_stack;
 
 int				ft_error(char *error_text);
-void ft_error_0(t_stack *stack_a, t_stack *stack_b, const char *msg);
+void ft_error_0(t_stack *stack_a, t_stack *stack_b, const char *msg, char **str);
+int	exit_with_error(char **args, t_stack *a, t_stack *b);
 t_node				*ft_lstnew_ps(int value);
 int					exits_in_stack(t_stack *stack, int value);
 int					is_numeric(const char *str);

@@ -1,6 +1,6 @@
 NAME = push_swap
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -g -Wall -Werror -Wextra
 SRC_DIR = .
 OBJ_DIR = objs
 SRCS = main.c input_parser.c error.c operations.c operations_r.c operations_rotation.c operations_swap.c utils.c small_sort.c indexing.c radix_sort.c

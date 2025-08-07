@@ -63,7 +63,7 @@ int	main(int argc, char *argv[])
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	char	**args;
+	char	**args = NULL;
 	int		count;
 
 	if (argc < 2)
@@ -74,10 +74,10 @@ int	main(int argc, char *argv[])
 	{
 		args = ft_split(argv[1], ' ');
 		if (!args || !*args)
-			return (free_split(args), free_stacks(stack_a, stack_b), 1);
+			ft_error_0(stack_a, stack_b, "Error\n", args);
 		count = count_args(args);
 		if (!fill_stack(stack_a, stack_b, count, args))
-			return (free_split(args), free_stacks(stack_a, stack_b), 1);
+			(ft_error_0(stack_a, stack_b, "Error\n", args));
 		free_split(args);
 	}
 	else if (!fill_stack(stack_a, stack_b, argc - 1, argv + 1))
@@ -86,6 +86,6 @@ int	main(int argc, char *argv[])
 		return (free_stacks(stack_a, stack_b), 0);
 	if (stack_a->size > 1)
 		sort_and_index(stack_a, stack_b);
-//	print_stack(stack_a);
+	//	print_stack(stack_a);
 	return (free_stacks(stack_a, stack_b), 0);
 }

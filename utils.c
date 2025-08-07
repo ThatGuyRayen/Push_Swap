@@ -31,7 +31,7 @@ void	free_split(char **split)
 	i = 0;
 	while (split[i])
 		free(split[i++]);
-	free(split);
+	//free(split);
 }
 
 int	check_sorted(t_stack *stack)
