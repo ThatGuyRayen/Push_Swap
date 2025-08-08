@@ -70,7 +70,7 @@ char	**ft_split(char const *s, char c)
 {
 	int		i;
 	char	**str;
-	
+
 	if (!s)
 		return (NULL);
 	str = (char **)malloc(sizeof(char *) * (word_count(s, c) + 1));
@@ -83,13 +83,11 @@ char	**ft_split(char const *s, char c)
 			s++;
 		else
 		{
-			int len = word_length(s, c);
-			str[i] = (char *)malloc(len + 1);
-			if (!str[i])
+			str[i] = ft_strnew(word_length(s, c));
+			if (!(str[i]))
 				return (free_memory(str, i - 1), NULL);
-			ft__strncpy(str[i], s, len);
-			str[i][len] = '\0';
-			s += len;
+			ft__strncpy(str[i], s, word_length(s, c));
+			s += word_length(s, c);
 			i++;
 		}
 	}

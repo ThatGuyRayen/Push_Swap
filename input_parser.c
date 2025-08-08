@@ -74,7 +74,7 @@ int	is_numeric(const char *str)
 	return (1);
 }
 
-int	fill_stack(t_stack *stack, t_stack *stack_b, int argc, char **argv)
+int	fill_stack(t_stack *stack, int argc, char **argv)
 {
 	int		i;
 	long	value;
@@ -84,13 +84,13 @@ int	fill_stack(t_stack *stack, t_stack *stack_b, int argc, char **argv)
 	while (i < argc)
 	{
 		if (!argv[i] || is_numeric(argv[i]) == 0)
-			ft_error_0(stack, stack_b, "Error\n", argv);
+			return (0);
 		value = ps_atoi(argv[i]);
 		if (exits_in_stack(stack, (int)value))
-			ft_error_0(stack, stack_b, "Error\n", argv);
+			return (0);
 		node = ft_lstnew_ps(value);
 		if (!node)
-			ft_error_0(stack, stack_b, "Error\n", argv);
+			return (0);
 		node->index = -1;
 		ft_lstadd_back_ps(&stack->top, node);
 		stack->size++;

@@ -12,21 +12,6 @@
 
 #include "push_swap.h"
 
-void	print_stack(t_stack *stack)
-{
-	t_node	*temp;
-
-	if (!stack || !stack->top)
-		ft_error("No stack");
-	temp = stack->top;
-	while (temp)
-	{
-		ft_printf("%d ", temp->value);
-		temp = temp->next;
-	}
-	ft_printf("\n");
-}
-
 int	init_stacks(t_stack **a, t_stack **b)
 {
 	*a = malloc(sizeof(t_stack));
@@ -44,13 +29,12 @@ int	init_stacks(t_stack **a, t_stack **b)
 	return (1);
 }
 
-int	free_stacks(t_stack *a, t_stack *b)
+void	free_stacks(t_stack *a, t_stack *b)
 {
 	free_stack(a);
 	free_stack(b);
 	free(a);
 	free(b);
-	return (0);
 }
 
 void	sort_and_index(t_stack *a, t_stack *b)
@@ -59,33 +43,38 @@ void	sort_and_index(t_stack *a, t_stack *b)
 	sort_stack(a, b);
 }
 
-int	main(int argc, char *argv[])
+static void	handle_args(int argc, char **argv, t_stack *a, t_stack *b)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-	char	**args = NULL;
+	char	**args;
 	int		count;
 
-	if (argc < 2)
-		return (0);	
-	if (!init_stacks(&stack_a, &stack_b))
-		ft_error("Error\n");
 	if (argc == 2)
 	{
 		args = ft_split(argv[1], ' ');
 		if (!args || !*args)
-			ft_error_0(stack_a, stack_b, "Error\n", args);
+			ft_error_0(a, b, "Error\n", args);
 		count = count_args(args);
-		if (!fill_stack(stack_a, stack_b, count, args))
-			(ft_error_0(stack_a, stack_b, "Error\n", args));
+		if (!fill_stack(a, count, args))
+			ft_error_0(a, b, "Error\n", args);
 		free_split(args);
 	}
-	else if (!fill_stack(stack_a, stack_b, argc - 1, argv + 1))
-		return (free_stacks(stack_a, stack_b), 1);
-	if (check_sorted(stack_a) == 1)
-		return (free_stacks(stack_a, stack_b), 0);
-	if (stack_a->size > 1)
-		sort_and_index(stack_a, stack_b);
-	//	print_stack(stack_a);
-	return (free_stacks(stack_a, stack_b), 0);
+	else if (!fill_stack(a, argc - 1, argv + 1))
+		ft_error_1(a, b, "Error\n");
+}
+
+int	main(int argc, char **argv)
+{
+	t_stack	*a;
+	t_stack	*b;
+
+	if (argc < 2)
+		return (0);
+	if (!init_stacks(&a, &b))
+		ft_error("Error\n");
+	handle_args(argc, argv, a, b);
+	if (check_sorted(a))
+		ft_error_1(a, b, "");
+	if (a->size > 1)
+		sort_and_index(a, b);
+	return (free_stacks(a, b), 0);
 }
