@@ -23,11 +23,11 @@ static const char	*skip_spaces_and_sign(const char *str, int *sign)
 		str++;
 	}
 	if (*str < '0' || *str > '9')
-		ft_error("Error\n");
+		return (NULL);
 	return (str);
 }
 
-static long	parse_number(const char *str, int sign)
+static int	parse_number(const char *str, int sign, int *out)
 {
 	long	result;
 
@@ -35,23 +35,28 @@ static long	parse_number(const char *str, int sign)
 	while (*str)
 	{
 		if (*str < '0' || *str > '9')
-			ft_error("Error\n");
+			return (0);
 		result = result * 10 + (*str - '0');
 		if ((sign == 1 && result > INT_MAX) 
 			|| (sign == -1 && (-result) < INT_MIN))
-			ft_error("Error\n");
+			return (0);
 		str++;
 	}
-	return (result);
+	*out = (int)(result * sign);
+	return (1);
 }
 
-int	ps_atoi(const char *str)
+int	ps_atoi(const char *str, int *res)
 {
-	int		sign;
-	long	result;
+	int	sign;
 
 	sign = 1;
+	if (!str || !res)
+		return (0);
 	str = skip_spaces_and_sign(str, &sign);
-	result = parse_number(str, sign);
-	return ((int)(result * sign));
+	if (!str)
+		return (0);
+	if (!parse_number(str, sign, res))
+		return (0);
+	return (1);
 }

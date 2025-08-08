@@ -74,6 +74,5 @@ void				free_stack(t_stack *stack);
 void				free_split(char **split);
 void				sort_and_index(t_stack *a, t_stack *b);
 int					check_sorted(t_stack *stack);
-int					ps_atoi(const char *str);
-
+int					ps_atoi(const char *str, int *res);
 #endif

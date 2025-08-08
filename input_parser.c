@@ -77,7 +77,7 @@ int	is_numeric(const char *str)
 int	fill_stack(t_stack *stack, int argc, char **argv)
 {
 	int		i;
-	long	value;
+	int		value;
 	t_node	*node;
 
 	i = 0;
@@ -85,7 +85,8 @@ int	fill_stack(t_stack *stack, int argc, char **argv)
 	{
 		if (!argv[i] || is_numeric(argv[i]) == 0)
 			return (0);
-		value = ps_atoi(argv[i]);
+		if (!ps_atoi(argv[i], &value))
+			return (0);
 		if (exits_in_stack(stack, (int)value))
 			return (0);
 		node = ft_lstnew_ps(value);
@@ -98,7 +99,6 @@ int	fill_stack(t_stack *stack, int argc, char **argv)
 	}
 	return (1);
 }
-
 /*
    1. reads and validates input
    2. checks for duplicates and valid integer range
