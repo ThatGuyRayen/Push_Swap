@@ -18,7 +18,7 @@ t_node	*ft_lstnew_ps(int value)
 
 	node = (t_node *)malloc(sizeof(t_node));
 	if (!node)
-		ft_error("Error\n");
+		return (NULL);
 	node->value = value;
 	node->index = -1;
 	node->next = NULL;
@@ -43,8 +43,6 @@ void	ft_lstadd_back_ps(t_node **lst, t_node *new)
 {
 	t_node	*last;
 
-	if (!lst || !new)
-		ft_error("Error\n");
 	if (!*lst)
 	{
 		*lst = new;

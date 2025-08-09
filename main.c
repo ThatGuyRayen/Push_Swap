@@ -14,13 +14,17 @@
 
 int	init_stacks(t_stack **a, t_stack **b)
 {
+	int	exit;
+
 	*a = malloc(sizeof(t_stack));
 	*b = malloc(sizeof(t_stack));
 	if (!*a || !*b)
 	{
 		free(*a);
 		free(*b);
-		ft_error("Error\n");
+		exit = ft_error("Error\n");
+		if (exit == 0)
+			return (0);
 	}
 	(*a)->top = NULL;
 	(*a)->size = 0;
@@ -70,7 +74,7 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 	if (!init_stacks(&a, &b))
-		ft_error("Error\n");
+		return (0);
 	handle_args(argc, argv, a, b);
 	if (check_sorted(a))
 		ft_error_1(a, b, "");

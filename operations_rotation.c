@@ -17,8 +17,6 @@ void	rotate(t_stack *stack)
 	t_node	*temp;
 	t_node	*node;
 
-	if (!stack || !stack->top || !stack->top->next)
-		ft_error("Error\n");
 	temp = stack->top;
 	stack->top = temp->next;
 	temp->next = NULL;
@@ -37,8 +35,6 @@ void	reverse_rotate(t_stack *stack)
 	t_node	*previous;
 	t_node	*current;
 
-	if (!stack || !stack->top || !stack->top->next)
-		ft_error("Error\n");
 	previous = NULL;
 	current = stack->top;
 	while (current->next)

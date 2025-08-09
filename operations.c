@@ -17,8 +17,6 @@ void	swap_s(t_stack *stack)
 	t_node	*first;
 	t_node	*second;
 
-	if (!stack->top || !stack->top->next)
-		ft_error("Error\n");
 	first = stack->top;
 	second = first->next;
 	stack->top = second;
@@ -30,11 +28,9 @@ void	push_value(t_stack *stack, int value)
 {
 	t_node	*node;
 
-	if (!stack || !stack->top || !stack->top->next)
-		ft_error("Error\n");
 	node = (t_node *)malloc(sizeof(t_node));
 	if (!node)
-		ft_error("Error\n");
+		return ;
 	node->value = value;
 	node->next = stack->top;
 	stack->top = node;
@@ -45,8 +41,6 @@ void	push(t_stack *src, t_stack *dest)
 {
 	t_node	*temp;
 
-	if (!src || !dest || !src->top)
-		ft_error("Error\n");
 	temp = src->top;
 	src->top = temp->next;
 	src->size--;
